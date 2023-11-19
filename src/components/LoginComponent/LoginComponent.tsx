@@ -1,13 +1,10 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import SuccessMessage from '../SuccessComponent/SuccessMessage';
+// import SuccessMessage from '../SuccessComponent/SuccessMessage';
 import ErrorMessage from '../ErrorComponent/ErrorMessage';
 import styled from 'styled-components';
-import { auth } from '../Security/FirebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { UserCredential } from 'firebase/auth';
-import { FirebaseError } from 'firebase/app';
+// import { UserCredential } from 'firebase/auth';
 
 const PageContainer = styled.div`
   display: flex;
@@ -28,7 +25,7 @@ const Footer = styled.footer`
 export default function LoginComponent() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -49,23 +46,23 @@ export default function LoginComponent() {
 
     setIsLoading(true);
 
-    signInWithEmailAndPassword(auth, username, password)
-      .then((userCredential: UserCredential) => {
-        // Handle successful login
-        const user = userCredential.user;
-        console.log('Authentication successful');
-        setShowSuccessMessage(true);
-        setShowErrorMessage(false);
-        setIsLoading(false);
-        navigate(`/welcome/${user.displayName}`);
-      })
-      .catch((error: FirebaseError) => {
-        // Handle authentication error
-        console.error('Authentication failed', error.message);
-        setShowSuccessMessage(false);
-        setShowErrorMessage(true);
-        setIsLoading(false);
-      });
+    // signInWithEmailAndPassword(auth, username, password)
+    //   .then((userCredential: UserCredential) => {
+    //     // Handle successful login
+    //     const user = userCredential.user;
+    //     console.log('Authentication successful');
+    //     setShowSuccessMessage(true);
+    //     setShowErrorMessage(false);
+    //     setIsLoading(false);
+    //     navigate(`/welcome/${user.displayName}`);
+    //   })
+    //   .catch((error: FirebaseError) => {
+    //     // Handle authentication error
+    //     console.error('Authentication failed', error.message);
+    //     setShowSuccessMessage(false);
+    //     setShowErrorMessage(true);
+    //     setIsLoading(false);
+    //   });
   }
 
   function handleSignup() {
@@ -89,7 +86,7 @@ export default function LoginComponent() {
           onForgotPassword={handleForgotPassword}
           isLoading={isLoading}
         />
-        {showSuccessMessage && <SuccessMessage />}
+        {/* {showSuccessMessage && <SuccessMessage />} */}
         {showErrorMessage && <ErrorMessage />}
       </ContentContainer>
       <Footer>This is your footer content.</Footer>
