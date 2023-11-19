@@ -29,7 +29,7 @@ function Logout() {
       <Logo>Logout</Logo>
       <LogoutComponent
         onLogout={handleLogout}
-        buttonLabel="Go back to Login Page!"
+        buttonLabel="Click -> Login Page!"
       />
     </LogoutContainer>
   );
